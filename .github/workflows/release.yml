@@ -1,0 +1,35 @@
+name: Publish update
+
+on:
+  push:
+    paths:
+      - 'thabat-test.apk'
+      - 'latest.json'
+      - '.github/workflows/release.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read version from latest.json
+        id: v
+        run: |
+          echo "name=$(python3 -c "import json;print(json.load(open('latest.json'))['versionName'])")" >> "$GITHUB_OUTPUT"
+
+      - name: Publish the release (latest.json + APK as assets)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="v${{ steps.v.outputs.name }}"
+          gh release delete "$TAG" --yes --cleanup-tag || true
+          gh release create "$TAG" thabat-test.apk latest.json \
+            --target "$GITHUB_SHA" \
+            --title "مسار ${{ steps.v.outputs.name }}" \
+            --notes "تحديث داخل التطبيق لبرنامج مسار. بيحافظ على كل بياناتك."
+          echo "Published $TAG"
