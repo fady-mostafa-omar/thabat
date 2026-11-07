@@ -11,6 +11,13 @@
 ![اللغة · العربية](https://img.shields.io/badge/اللغة-العربية-10A594)
 ![يحارب الانتكاسة](https://img.shields.io/badge/الهدف-محاربة%20الانتكاسة-FFBE2E)
 
+<br/>
+
+[![تحميل المثبّت · Download](https://img.shields.io/badge/⬇️%20تحميل%20المثبّت%20·%20Download-10A594?style=for-the-badge)](https://github.com/fady-mostafa-omar/thabat/releases/latest/download/Masar-Setup.zip)
+
+<sub>يحتاج لابتوب ويندوز + كابل USB · موبايل أندرويد 10+ (أوبو / ColorOS) · <a href="#التثبيت-من-الكمبيوتر">خطوات التثبيت ↓</a></sub>
+<br/><sub><i>(نسخة تجريبية · a test build)</i></sub>
+
 </div>
 
 ---

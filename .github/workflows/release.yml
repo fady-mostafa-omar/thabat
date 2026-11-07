@@ -5,6 +5,7 @@ on:
     paths:
       - 'thabat-test.apk'
       - 'latest.json'
+      - 'Masar-Setup.zip'
       - '.github/workflows/release.yml'
   workflow_dispatch:
 
@@ -28,8 +29,8 @@ jobs:
         run: |
           TAG="v${{ steps.v.outputs.name }}"
           gh release delete "$TAG" --yes --cleanup-tag || true
-          gh release create "$TAG" thabat-test.apk latest.json \
+          gh release create "$TAG" thabat-test.apk latest.json Masar-Setup.zip \
             --target "$GITHUB_SHA" \
             --title "مسار ${{ steps.v.outputs.name }}" \
-            --notes "تحديث داخل التطبيق لبرنامج مسار. بيحافظ على كل بياناتك."
+            --notes "مسار — نسخة تجريبية. المثبّت: Masar-Setup.zip (يُشغّل من لابتوب ويندوز). التحديث داخل التطبيق بيحافظ على كل بياناتك."
           echo "Published $TAG"
